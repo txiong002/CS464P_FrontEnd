@@ -5,22 +5,26 @@ elem.addEventListener("input", handleInput);
 
 function handleInput(event) {
     const inputValue = event.target.value;
+    const resultElement = document.getElementById("result");
 
-    const isPalindrome = checkIfPalindrome(inputValue);
-
-    if (isPalindrome) {
-        result.textContent = `${inputValue} is a palindrome`;
+    if (inputValue < 0) {
+        resultElement.classList.add("text-danger");
+        resultElement.textContent = "Value must be a positive number";
     } else {
-        result.textContent = `${inputValue} is not a palindrome`;
+        const isPalindrome = checkIfPalindrome(inputValue);
+        if (isPalindrome) {
+            resultElement.classList.remove("text-danger");
+            resultElement.classList.add("text-success");
+            resultElement.textContent = `${inputValue} is a palindrome`;
+        } else {
+            resultElement.classList.remove("text-success");
+            resultElement.classList.add("text-danger");
+            resultElement.textContent = `${inputValue} is not a palindrome`;
+        }
     }
 }
 
 function checkIfPalindrome(number) {
-    // Check to make sure number is positive
-    if (number < 0) {
-        return false;
-    }
-
     // Put the number into an array for comparison
     const digits = Array.from(String(number));
 
