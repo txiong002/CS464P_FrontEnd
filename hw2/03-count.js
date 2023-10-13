@@ -1,3 +1,21 @@
-// Add your code here
+const input = document.querySelector("input");
+const result = document.querySelector("#results");
 
-input.addEventListener('keydown', handleKeyDown);
+let userInput = "";
+
+function handleKeyDown(event) {
+    userInput = (event.target.value + event.key).toLowerCase();
+    updateResults();
+}
+
+function updateResults() {
+    const text = result.textContent.toLowerCase();
+    const pattern = new RegExp(userInput, "g");
+    const highlightedText = text.replace(
+        pattern,
+        (match) => `<span class="highlight">${match}</span>`,
+    );
+    result.innerHTML = highlightedText;
+}
+
+input.addEventListener("keydown", handleKeyDown);
