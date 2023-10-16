@@ -10,7 +10,10 @@ function handleKeyDown(event) {
 
 function updateResults() {
     const text = result.textContent.toLowerCase();
-    const pattern = new RegExp(userInput, "g");
+    const pattern = new RegExp(
+        `\\b${userInput.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+        "g",
+    );
     const highlightedText = text.replace(
         pattern,
         (match) => `<span class="highlight">${match}</span>`,
