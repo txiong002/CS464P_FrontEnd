@@ -1,5 +1,7 @@
 const labelStyle = document.querySelectorAll("label");
 const form = document.querySelector("form");
+const checkBoxStyle = document.querySelectorAll("span");
+const inputStyle = document.querySelectorAll("input");
 
 function handleSubmitForm(event) {
     event.preventDefault();
@@ -25,8 +27,18 @@ function handleSubmitForm(event) {
     console.log(`Comments: ${addComment}`);
 }
 
+// html styling
 labelStyle.forEach(function (label) {
     label.style.fontWeight = "bold";
+});
+
+checkBoxStyle.forEach(function (checkBox) {
+    checkBox.style.fontWeight = "normal";
+});
+
+inputStyle.forEach(function (input) {
+    input.style.borderRadius = "3px";
+    input.style.borderWidth = "1px";
 });
 
 form.addEventListener("submit", handleSubmitForm);
