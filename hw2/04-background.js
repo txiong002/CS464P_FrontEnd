@@ -1,6 +1,14 @@
-const button = document.querySelector("#mainButton");
+const button = document.querySelector('#mainButton');
 let interval;
-let isRunning = false;
+let isRunning = true;
+
+function startChange() {
+    interval = setInterval(() => {
+        document.body.style.backgroundColor = generateRandomColors();
+    }, parseInt(document.querySelector('#userInput').value) * 1000);
+}
+
+startChange();
 
 // Generate random colors
 function generateRandomColors() {
@@ -15,20 +23,18 @@ function generateRandomColors() {
 
 // Update button status
 function updateButtonStatus() {
-    const buttonStatus = document.querySelector("#mainButton");
+    const buttonStatus = document.querySelector('#mainButton');
     if (isRunning) {
         clearInterval(interval);
-        buttonStatus.value = "Start";
-        buttonStatus.classList.remove("btn-danger");
-        buttonStatus.classList.add("btn-primary");
+        buttonStatus.value = 'Start';
+        buttonStatus.classList.remove('btn-danger');
+        buttonStatus.classList.add('btn-primary');
     } else {
-        interval = setInterval(() => {
-            document.body.style.backgroundColor = generateRandomColors();
-        }, parseInt(document.querySelector("#userInput").value) * 1000);
-        buttonStatus.value = "Stop";
-        buttonStatus.classList.add("btn-danger");
+        startChange();
+        buttonStatus.value = 'Stop';
+        buttonStatus.classList.add('btn-danger');
     }
     isRunning = !isRunning;
 }
 
-button.addEventListener("click", updateButtonStatus);
+button.addEventListener('click', updateButtonStatus);
