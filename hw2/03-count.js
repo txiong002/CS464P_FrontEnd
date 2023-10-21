@@ -1,18 +1,18 @@
-const input = document.querySelector("input");
-const result = document.querySelector("#results");
+const input = document.querySelector('input');
+const result = document.querySelector('#results');
 
-let userInput = "";
+let userInput = '';
 
 function handleKeyDown(event) {
-    userInput = (event.target.value + event.key).toLowerCase();
+    userInput = event.target.value + event.key;
     updateResults();
 }
 
 function updateResults() {
-    const text = result.textContent.toLowerCase();
+    const text = result.textContent;
     const pattern = new RegExp(
-        `\\b${userInput.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
-        "g",
+        `\\b${userInput.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`,
+        'g',
     );
     const highlightedText = text.replace(
         pattern,
@@ -21,4 +21,4 @@ function updateResults() {
     result.innerHTML = highlightedText;
 }
 
-input.addEventListener("keydown", handleKeyDown);
+input.addEventListener('keydown', handleKeyDown);
