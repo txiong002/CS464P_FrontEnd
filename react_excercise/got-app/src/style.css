@@ -1,5 +1,10 @@
-.title {
+body {
+    background-color: #67331e;
+}
+
+h1 {
     font-weight: bold;
+    color: antiquewhite;
     text-align: center;
 }
 
