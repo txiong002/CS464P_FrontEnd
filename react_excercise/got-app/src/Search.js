@@ -21,19 +21,6 @@ const Search = () => {
         }
     };
 
-    // const handleDisplay = () => {
-    // const foundCharacter = [];
-    // searchCharacter.forEach((character) => {
-    // foundCharacter.push(
-    // <div key={character.id}>
-    // <img src={character.imageUrl} alt={character.fullName} />
-    // <p>{character.fullName}</p>
-    // </div>,
-    // );
-    // });
-    // return foundCharacter;
-    // };
-
     return (
         <>
             <div className='col-sm-6 mt-4'>
@@ -51,7 +38,7 @@ const Search = () => {
             <Container fluid>
                 <Row>
                     <Col>
-                        <CardGroup body className='mt-4 px-4'>
+                        <CardGroup className='mt-4 px-4'>
                             {searchCharacter.map((character) => (
                                 <Card
                                     style={{ minWidth: '250px' }}
