@@ -58,7 +58,7 @@ async function renderChart() {
                 labels: Object.keys(houseName),
                 datasets: [
                     {
-                        label: 'My First Dataset',
+                        label: 'Houses of Westeros',
                         data: Object.values(houseName),
                         backgroundColor: backgroundColors,
                         borderColor: borderColors,
