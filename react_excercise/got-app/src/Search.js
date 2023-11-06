@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, InputGroup, Button } from 'reactstrap';
-const { searchForCharacters } = require('./Api');
+const { searchForCharacters } = require('./SearchCharacters');
 
 const Search = () => {
     const [searchCharacter, setSearchCharacter] = useState([]);
@@ -8,14 +8,17 @@ const Search = () => {
     const [error, setError] = useState(null);
 
     const handleInput = (event) => {
+        setError(null);
         setInputCharacter(event.target.value);
     };
 
-    const findCharacter = async () => {
+    const findCharacter = async (event) => {
+        event.preventDefault();
         try {
             const data = await searchForCharacters(inputCharacter);
             setSearchCharacter(data);
             setError(null);
+            setInputCharacter('');
         } catch (error) {
             console.error('Error fetching data');
             setError(error.message);
@@ -24,19 +27,29 @@ const Search = () => {
     };
 
     return (
-        <body>
-            <div className='col-sm-6 mt-4'>
-                <InputGroup>
-                    <Input
-                        placeholder='Enter characters first name'
-                        value={inputCharacter}
-                        onChange={handleInput}
-                    />
-                    <Button color='primary' onClick={findCharacter}>
-                        Search
-                    </Button>
-                </InputGroup>
-            </div>
+        <div>
+            <h1>Search for you favorite GOT character</h1>
+            <form onSubmit={findCharacter}>
+                <div className='col-sm-6 mt-4'>
+                    <label
+                        htmlFor='characterName'
+                        className='fs-4 fw-bold text-white'
+                    >
+                        Enter characters first name
+                    </label>
+                    <InputGroup>
+                        <Input
+                            id='characterName'
+                            placeholder='name'
+                            value={inputCharacter}
+                            onChange={handleInput}
+                        />
+                        <Button color='primary' type='submit'>
+                            Search
+                        </Button>
+                    </InputGroup>
+                </div>
+            </form>
             <div
                 className={`container ${
                     searchCharacter.length > 0
@@ -54,7 +67,7 @@ const Search = () => {
                             <img
                                 className='mx-auto image-fluid'
                                 src={character.imageUrl}
-                                alt={character.fullName}
+                                alt={`Displaying the character: ${character.fullName}`}
                                 key={`img-${character.id}`}
                                 style={{
                                     objectFit: 'cover',
@@ -70,7 +83,7 @@ const Search = () => {
                     ))}
                 </div>
             </div>
-        </body>
+        </div>
     );
 };
 

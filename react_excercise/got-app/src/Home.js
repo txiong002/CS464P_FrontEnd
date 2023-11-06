@@ -3,12 +3,12 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <body>
+        <div>
             <h1 className='title'> Welcome to Everything Game of Thrones</h1>
             <div className='container mx-auto'>
                 <img src='/images/got01.png' alt='Game of Thrones' />
             </div>
-        </body>
+        </div>
     );
 };
 

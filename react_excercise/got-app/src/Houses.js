@@ -5,11 +5,12 @@ import 'chart.js/auto';
 
 const Houses = () => {
     return (
-        <body className='bg-white'>
+        <div className='bg-white'>
+            <h1 className='text-dark'>Houses of Game Of Thrones</h1>
             <div className='container w-50'>
                 <Doughnut data={chartData} />;
             </div>
-        </body>
+        </div>
     );
 };
 

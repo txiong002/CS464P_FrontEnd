@@ -7,7 +7,7 @@ const getApi = 'https://thronesapi.com/api/v2/Characters';
  * @returns {Promise} - A promise that resolves with the fetched JSON data, or rejects with an error
  */
 const fetchData = async (url) => {
-    let promise = new Promise((resolve, reject) => {
+    let getCharacters = new Promise((resolve, reject) => {
         fetch(url)
             // Parse the response as JSON
             .then((response) => response.json())
@@ -20,7 +20,7 @@ const fetchData = async (url) => {
     // Wait for the promise to resolve and store the result in the 'data' variable, then returns the data from the function
     // or returns an error if the promise is rejected
     try {
-        let data = await promise;
+        let data = await getCharacters;
         return data;
     } catch (err) {
         console.log(err);
@@ -33,24 +33,29 @@ async function displayCharacter() {
         const characterData = await fetchData(getApi);
 
         const characterDetails = document.getElementById('character');
-        const characterRow = document.createElement('div');
-        characterRow.classList.add('row', 'mb-4', 'mt-4', 'character-row');
+        const characterContainer = document.createElement('div');
+        characterContainer.classList.add(
+            'row',
+            'mb-4',
+            'mt-4',
+            'character-container',
+        );
 
         characterData.forEach((character) => {
             // create div for each character
-            const characterImgCol = document.createElement('div');
-            characterImgCol.classList.add(
+            const characterCard = document.createElement('div');
+            characterCard.classList.add(
                 'col-md-3',
                 'col-6',
                 'mb-5',
-                'character-col',
+                'character-card',
             );
 
             const characterImage = document.createElement('img');
             characterImage.src = character.imageUrl;
-            characterImage.alt = 'Character Image';
+            characterImage.alt = `Picture of ${character.fullName}`;
             characterImage.classList.add('img-fluid', 'character-image');
-            characterImgCol.appendChild(characterImage);
+            characterCard.appendChild(characterImage);
 
             const characterName = document.createElement('p');
             characterName.id = 'character-name';
@@ -60,10 +65,10 @@ async function displayCharacter() {
             const title = character.title;
             characterName.innerText = `${name}`;
             characterTitle.innerText = `${title}`;
-            characterDetails.appendChild(characterRow);
-            characterRow.appendChild(characterImgCol);
-            characterImgCol.appendChild(characterName);
-            characterImgCol.appendChild(characterTitle);
+            characterDetails.appendChild(characterContainer);
+            characterContainer.appendChild(characterCard);
+            characterCard.appendChild(characterName);
+            characterCard.appendChild(characterTitle);
         });
     } catch (error) {
         console.error('Error displaying character data: ', error);

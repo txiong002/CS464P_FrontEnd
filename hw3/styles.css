@@ -18,12 +18,12 @@ h1 {
     background-color: var(--white);
 }
 
-.character-row {
+.character-container {
     margin-bottom: 20px;
 }
 
-.character-col:hover {
-    background-color: #00425c;
+.character-card:hover {
+    background-color: var(--blue);
     color: #ffffff;
 }
 .character-image {

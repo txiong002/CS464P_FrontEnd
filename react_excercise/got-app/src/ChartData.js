@@ -1,4 +1,4 @@
-import { getHouseMembers } from './Api';
+import { getHouseMembers } from './GetHouseMembers';
 
 const backgroundColors = [
     'rgba(54, 162, 235, 0.8)',
