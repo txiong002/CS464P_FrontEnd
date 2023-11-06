@@ -4,9 +4,7 @@ async function searchForCharacters(input) {
     try {
         const results = await fetchData();
         const findCharacter = results.filter((character) => {
-            return character.lastName
-                .toLowerCase()
-                .includes(input.toLowerCase());
+            return character.lastName.toLowerCase() === input.toLowerCase();
         });
         return findCharacter;
     } catch (error) {
@@ -15,4 +13,4 @@ async function searchForCharacters(input) {
     }
 }
 
-export default searchForCharacters;
+export { searchForCharacters };
