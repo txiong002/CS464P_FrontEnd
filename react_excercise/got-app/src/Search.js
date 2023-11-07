@@ -28,7 +28,7 @@ const Search = () => {
 
     return (
         <div>
-            <h1>Search for you favorite GOT character</h1>
+            <h1>Search for your favorite GOT character</h1>
             <form onSubmit={findCharacter}>
                 <div className='col-sm-6 mt-4'>
                     <label
