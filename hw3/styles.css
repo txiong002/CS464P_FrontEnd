@@ -1,19 +1,42 @@
 :root {
-  --black: #020202;
-  --white: #ffffff;
-  --blue: #00425c;
-  --cyan: #17a2b8;
+    --black: #020202;
+    --white: #ffffff;
+    --blue: #00425c;
+    --cyan: #17a2b8;
 }
 
 body {
-  background-color: var(--cyan);
+    background-color: var(--cyan);
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .donut-chart {
-  border-radius: 0.8rem;
-  background-color: var(--white);
+    border-radius: 0.8rem;
+    background-color: var(--white);
+}
+
+.character-container {
+    margin-bottom: 20px;
+}
+
+.character-card:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+.character-image {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#character-name {
+    font-weight: bold;
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#character-title {
+    font-weight: bold;
 }
