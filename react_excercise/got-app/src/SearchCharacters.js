@@ -10,7 +10,7 @@ async function searchForCharacters(input) {
             return character.firstName.toLowerCase() === input.toLowerCase();
         });
         if (findCharacter.length === 0) {
-            throw new Error('No characters found');
+            return [];
         }
         return findCharacter;
     } catch (error) {

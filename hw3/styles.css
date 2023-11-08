@@ -24,7 +24,7 @@ h1 {
 
 .character-card:hover {
     background-color: var(--blue);
-    color: #ffffff;
+    color: var(--white);
 }
 .character-image {
     width: 100%;

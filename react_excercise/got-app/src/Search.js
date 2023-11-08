@@ -16,9 +16,16 @@ const Search = () => {
         event.preventDefault();
         try {
             const data = await searchForCharacters(inputCharacter);
-            setSearchCharacter(data);
-            setError(null);
-            setInputCharacter('');
+            if (data.length === 0 || data.length === null) {
+                console.error('No characters found');
+                setError('No characters found');
+                setSearchCharacter([]);
+                setInputCharacter('');
+            } else {
+                setSearchCharacter(data);
+                setError(null);
+                setInputCharacter('');
+            }
         } catch (error) {
             console.error('Error fetching data');
             setError(error.message);
